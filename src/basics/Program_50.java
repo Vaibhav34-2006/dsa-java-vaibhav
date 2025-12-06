@@ -1,6 +1,6 @@
 package basics;
 
-public class Programm_50 {
+public class Program_50 {
 
     // convert decimal to binary
     public static void dectobin(int n) {
