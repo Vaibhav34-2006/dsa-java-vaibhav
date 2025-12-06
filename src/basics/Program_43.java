@@ -30,7 +30,7 @@ public class Program_43 {
 
         System.out.println("nCr = " + nCr);
     }
-
+ 
     public static void main(String[] args) {
         binomial();  // calling the function
     }
