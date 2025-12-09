@@ -1,6 +1,6 @@
 package strings;
 
-public class String_Compression {
+public class String_13 {
 
     // Function to compress the string using Run-Length Encoding
     public static String compressString(String str) {
