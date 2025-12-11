@@ -25,9 +25,9 @@ public class OOPS_17 {
 
     public static void main(String[] args) {
 
-        // Animals a = new Animals();  ❌ Not allowed (abstract)
+        // Animals a = new Animals();   Not allowed (abstract)
 
-        Dogs d = new Dogs();   // ✔ allowed
+        Dogs d = new Dogs();   //  allowed
         d.sound();             // overridden method
         d.eat();               // inherited method
     }
