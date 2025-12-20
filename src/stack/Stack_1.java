@@ -51,7 +51,7 @@ public class Stack_1 {
     }
 
     public static void main(String[] args) {
-
+        Stack s = new Stack();
         // Push elements into stack
         Stack_1.push(1);
         Stack_1.push(2);
