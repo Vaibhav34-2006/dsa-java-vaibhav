@@ -3,14 +3,18 @@ package trie;
 public class Trie_1 {
 
     // ---------- NODE CLASS ----------
+    // Each node represents one character
     static class Node {
-        // Each node has 26 children (a–z)
+
+        // Array to store children nodes for characters a–z
         Node[] children = new Node[26];
 
-        // End Of Word flag
+        // eow = End Of Word
+        // true → a word ends at this node
         boolean eow = false;
 
-        // Constructor to initialize children as null
+        // Constructor
+        // Initializes all children as null
         Node() {
             for (int i = 0; i < 26; i++) {
                 children[i] = null;
@@ -19,56 +23,65 @@ public class Trie_1 {
     }
 
     // ---------- ROOT NODE ----------
+    // Root is the starting point of Trie
     public static Node root = new Node();
 
     // ---------- INSERT FUNCTION ----------
+    // Inserts a word into the Trie
     public static void insert(String word) {
 
+        // Start from root
         Node curr = root;
 
+        // Traverse each character of the word
         for (int level = 0; level < word.length(); level++) {
 
-            // Convert character to index (0–25)
+            // Convert character to index (a=0, b=1, ..., z=25)
             int idx = word.charAt(level) - 'a';
 
-            // If node does not exist, create it
+            // If the path does not exist, create a new node
             if (curr.children[idx] == null) {
                 curr.children[idx] = new Node();
+            }
+
+            // Move to the next node
+            curr = curr.children[idx];
+        }
+
+        // After last character, mark end of word
+        curr.eow = true;
+    }
+
+    // ---------- SEARCH FUNCTION ----------
+    // Checks whether a word exists in the Trie
+    public static boolean search(String key) {
+
+        // Start from root
+        Node curr = root;
+
+        // Traverse each character of the key
+        for (int level = 0; level < key.length(); level++) {
+
+            // Convert character to index
+            int idx = key.charAt(level) - 'a';
+
+            // If character path does not exist → word not found
+            if (curr.children[idx] == null) {
+                return false;
             }
 
             // Move to next node
             curr = curr.children[idx];
         }
 
-        // Mark end of word
-        curr.eow = true;
-    }
-
-    // ---------- SEARCH FUNCTION ----------
-    public static boolean search(String key) {
-
-        Node curr = root;
-
-        for (int level = 0; level < key.length(); level++) {
-
-            int idx = key.charAt(level) - 'a';
-
-            // If character path not found
-            if (curr.children[idx] == null) {
-                return false;
-            }
-
-            curr = curr.children[idx];
-        }
-
-        // Word exists only if end-of-word is true
+        // Word is found only if end-of-word flag is true
         return curr.eow == true;
     }
 
     // ---------- MAIN METHOD ----------
     public static void main(String[] args) {
 
-        // Words to insert
+        // Words to be inserted into Trie
         String[] words = {
             "the",
             "a",
@@ -78,12 +91,12 @@ public class Trie_1 {
             "thee"
         };
 
-        // Insert words into Trie
+        // Insert all words into Trie
         for (int i = 0; i < words.length; i++) {
             insert(words[i]);
         }
 
-        // Search test cases
+        // Search operations
         System.out.println(search("the"));    // true
         System.out.println(search("there"));  // true
         System.out.println(search("their"));  // true
