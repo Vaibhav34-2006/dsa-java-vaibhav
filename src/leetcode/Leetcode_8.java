@@ -25,6 +25,6 @@ public class Leetcode_8 {
 
         // Print results
         System.out.println(n1 + " is power of three? " + isPowerOfThree(n1));
-        System.out.println(n2 + " is power of three? " + isPowerOfThree(n2));
+        System.out.println(n2 + " is power of three " + isPowerOfThree(n2));
     }
 }
